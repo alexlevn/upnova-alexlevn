@@ -1,0 +1,234 @@
+@keyframes fade-out {
+	to {
+		transform: translate(70%, 0);
+		opacity: 0;
+	}
+	from {
+		transform: translate(0, 0);
+		opacity: 1;	
+	}
+}
+
+#upez_loading_indicator.upez-loaded {
+  animation: fade-out.7s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  pointer-events: none;
+}
+#upez_loading_indicator.upez-loaded * {
+  animation: none;
+}
+html[upez-loaded] #upez_loading_indicator * {
+  animation: none;
+}
+body:has(#upezCart.builder-loaded) #upez_loading_indicator *,
+body:has(#upezCart.builder-loaded) #upez_loading_indicator *::before, 
+body:has(#upezCart.builder-loaded) #upez_loading_indicator *::after {
+  animation: none;
+}
+
+html[upez-loaded] #upez_loading_indicator {
+  animation: fade-out.7s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+body:has(#upezCart.builder-loaded) #upez_loading_indicator {
+  animation: fade-out.7s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes expand-in {
+	from {
+		width: 0;
+		opacity: 0;
+	}
+	to {
+		width: 50px;
+		opacity: 1;	
+	}
+}
+
+.expand-in {
+  animation: expand-in .7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.upez__ring_effect {
+  --uib-size: 40px;
+  --uib-speed: 2s;
+  --uib-color: rgba(0,0,0,0.5);
+  
+  height: var(--uib-size);
+  width: var(--uib-size);
+  vertical-align: middle;
+  transform-origin: center;
+  animation: rotate var(--uib-speed) linear infinite;
+}
+
+.upez__ring_effect circle {
+  fill: none;
+  stroke: var(--uib-color);
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: stretch calc(var(--uib-speed) * 0.75) ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes stretch {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dashoffset: -124px;
+  }
+}
+
+.upez__default-button {
+  font-family: inherit;
+  font-size: inherit;
+  background: black;
+  color: white;
+  padding: 1rem 2rem;
+  border: 0;
+  cursor: pointer;
+}
+
+.race-by {
+  --uib-size: 80px;
+  --uib-speed: 1.4s;
+  --uib-color: black;
+  --uib-line-weight: 5px;
+
+  position: relative;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  height: var(--uib-line-weight);
+  width: var(--uib-size);
+  border-radius: calc(var(--uib-line-weight) / 2);
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.race-by::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--uib-color);
+  opacity: 0.1;
+}
+
+.race-by::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  border-radius: calc(var(--uib-line-weight) / 2);
+  animation: raceBy var(--uib-speed) ease-in-out infinite;
+  transform: translateX(-100%);
+  background-color: var(--uib-color);
+}
+
+@keyframes raceBy {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.upez__html p {
+  margin: 0;
+}
+
+.upez--spinner-loader {
+  position: relative;
+}
+.upez--spinner-loader::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.2px solid #ffffff4f;
+  border-top: 1.2px solid white;
+  animation: upez--spinner-loader-animation 1.1s linear infinite;
+  background: transparent;
+}
+@keyframes upez--spinner-loader-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+[data-upez-cart="upez"]:has(#upez_loading_indicator) *:not(#upez_loading_indicator *):not(#upez_loading_indicator):not(body:has(#upezCart.builder-loaded) *):not(html[upez-loaded] *) {
+  stroke: transparent;
+  fill: transparent;
+  color: transparent;
+  background: transparent;
+}
+
+.upez--spinner-absolute:empty {
+  display: block;
+}
+.upez--spinner-absolute {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+.upez--spinner-absolute::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.2px solid transparent;
+  border-top: 1.2px solid currentColor;
+  animation: upez__spinner 1.1s linear infinite;
+  background: transparent;
+}
+.upez--spinner-absolute::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.2px solid currentColor;
+  opacity: 0.2;
+  animation: upez__spinner 1.1s linear infinite;
+  background: transparent;
+}
+
+@keyframes upez__spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

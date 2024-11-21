@@ -1,0 +1,432 @@
+{
+  "settings": [
+    {
+      "type": "header",
+      "content": "Cart settings"
+    },
+    {
+      "default": "450px",
+      "options": [
+        {
+          "label": "Small",
+          "value": "450px"
+        },
+        {
+          "label": "Medium",
+          "value": "530px"
+        },
+        {
+          "label": "Big",
+          "value": "800px"
+        }
+      ],
+      "label": "Cart Width",
+      "id": "cart_width",
+      "type": "select"
+    },
+    {
+      "default": "upez-btn--checkout",
+      "placeholder": "e.g: btn btn--black-outline",
+      "label": "Checkout button class names",
+      "id": "checkout_btn_class",
+      "type": "button",
+      "info": "Enter the pre-defined css classes to apply your own style."
+    },
+    {
+      "default": true,
+      "thumbnail": "https://cdn.builder.io/api/v1/image/assets%2F3628f640692a4d2fa236d814bb277285%2F7db22cbcfd3e45c3bb63de3d07298475",
+      "label": "Show ratings",
+      "id": "show_ratings",
+      "type": "boolean",
+      "info": "Show ratings in cart item"
+    },
+    {
+      "thumbnail": "https://cdn.builder.io/api/v1/image/assets%2F3628f640692a4d2fa236d814bb277285%2Fe91ce81a14114157aad2fe0b097ee74a",
+      "default": true,
+      "label": "Enable quick payments",
+      "id": "enable_dynamic_checkout",
+      "type": "boolean",
+      "info": "Allow customers to checkout using Apple Pay, Shop Pay or PayPal. This will reduce the customers' checkout time and increase your conversion"
+    },
+    {
+      "thumbnail": "https://cdn.builder.io/api/v1/image/assets%2F3628f640692a4d2fa236d814bb277285%2Feeaf90dd3bf6451e831e1cfcaba364e6",
+      "default": false,
+      "id": "enable_note",
+      "label": "Enable order note",
+      "type": "boolean",
+      "info": "Allow customers to enter a note in the cart"
+    },
+    {
+      "default": "🎁 Add free gift message",
+      "show_when": "settings.enable_note == true",
+      "label": "Order Note",
+      "placeholder": "Order Note",
+      "id": "__label_order_note",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "thumbnail": "https://cdn.builder.io/api/v1/image/assets%2F3628f640692a4d2fa236d814bb277285%2F988b48d99f7b4f138f0f95d0eb0535c1",
+      "default": true,
+      "id": "enable_discount_form",
+      "label": "Enable discount code input",
+      "type": "boolean",
+      "info": "Allow customers to enter a discount code in the cart"
+    },
+    {
+      "default": "Add discount",
+      "show_when": "settings.enable_discount_form == true",
+      "id": "__label_add_discount_label",
+      "label": "Add discount label",
+      "placeholder": "Add discount",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "show_when": "settings.enable_discount_form == true",
+      "default": "Apply",
+      "id": "__label_apply_discount",
+      "label": "Apply discount label",
+      "type": "text"
+    },
+    {
+      "show_when": "settings.enable_discount_form == true",
+      "default": "button btn btn--medium btn--secondary",
+      "id": "apply_discount_btn",
+      "label": "Apply discount button class names",
+      "type": "button"
+    },
+    {
+      "default": false,
+      "thumbnail": "https://cdn.builder.io/api/v1/image/assets%2F3628f640692a4d2fa236d814bb277285%2F43b6f7783d1d4c8799b74c2abce4c1d2",
+      "id": "enable_disclaimer",
+      "label": "Show shopping disclaimer",
+      "type": "boolean"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "default": "rgba(7, 7, 7, 0.44)",
+      "label": "Backdrop color",
+      "id": "backdrop_color",
+      "type": "color"
+    },
+    {
+      "default": "#faf8f4",
+      "id": "reward_section_background_color",
+      "label": "Reward Section Background Color",
+      "type": "color"
+    },
+    {
+      "id": "cart_inner_background",
+      "label": "Cart Inner Background",
+      "type": "color"
+    },
+    {
+      "default": "black",
+      "label": "Cart Text Color",
+      "id": "cart_text_color",
+      "type": "color"
+    },
+    {
+      "default": "#faf8f4",
+      "label": "Cart upsell background color",
+      "id": "upsell_container_bg_color",
+      "type": "color"
+    },
+    {
+      "default": "green",
+      "label": "Primary Color",
+      "id": "primary_color",
+      "type": "color",
+      "info": "This color will be used for active goals or purchase goal progress"
+    },
+    {
+      "default": "red",
+      "label": "Discount Color",
+      "id": "discount_color",
+      "type": "color",
+      "info": "This color will be used for discounted price labels"
+    },
+    {
+      "default": "black",
+      "id": "star_review_color",
+      "label": "Star Review Color",
+      "type": "color"
+    },
+    {
+      "type": "header",
+      "subheadline": "Display a sliding announcement at the top of the cart. This is useful when you want to show a special announcement or promotion.",
+      "content": "Announcement (Marquee)"
+    },
+    {
+      "default": [],
+      "blocks": [
+        {
+          "default": "Special announcement",
+          "id": "headline",
+          "label": "Headline",
+          "type": "richtext"
+        }
+      ],
+      "label": "Headlines",
+      "id": "headlines",
+      "type": "blocks",
+      "info": "Add a headline (or multiple) to the top of the cart"
+    },
+    {
+      "default": "white",
+      "id": "marquee_bg_color",
+      "label": "Marquee Background Color",
+      "type": "color"
+    },
+    {
+      "type": "header",
+      "content": "Reward settings"
+    },
+    {
+      "default": true,
+      "id": "rewards_float_on_top",
+      "label": "Always float the reward section on top of the cart",
+      "type": "boolean"
+    },
+    {
+      "default": "a8e7884de2f24d619f9bfe928bbf2b85",
+      "label": "Rewards Template",
+      "id": "goals_template",
+      "type": "template:shopping-goals"
+    },
+    {
+      "type": "header",
+      "content": "Free gift"
+    },
+    {
+      "default": "98ea9ae934a8448d85f43c31c3e489de",
+      "label": "Free Gift Template",
+      "id": "free_gift_template",
+      "type": "template:free-gift"
+    },
+    {
+      "default": "button btn btn--medium btn--secondary",
+      "id": "change_free_gift_btn",
+      "label": "Change free gift button class names",
+      "type": "button",
+      "info": "This button will show in the free gift item in the cart. This button is used to remove the free gift from the cart and allow customers to choose a different gift"
+    },
+    {
+      "type": "header",
+      "content": "Messages (Labels)",
+      "info": "Update texts on your cart"
+    },
+    {
+      "default": "Cart",
+      "placeholder": "Cart",
+      "label": "Cart Label",
+      "id": "__label_cart",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "default": "Your cart is empty.",
+      "placeholder": "Your cart is empty.",
+      "id": "__label_cart_empty",
+      "label": "Cart Empty Text",
+      "type": "text",
+      "info": "This shows when the cart is empty"
+    },
+    {
+      "default": "Subtotal",
+      "id": "__label_subtotal",
+      "label": "Subtotal",
+      "placeholder": "Subtotal",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "default": "Discount code",
+      "label": "Discount Input Placeholder",
+      "id": "__label_discount_input_placeholder",
+      "placeholder": "Discount code",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "default": "Checkout",
+      "placeholder": "Checkout",
+      "id": "__label_checkout",
+      "label": "Checkout",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "default": "Shipping, taxes, and discount codes are calculated at checkout.",
+      "id": "__label_checkout_disclaimer",
+      "placeholder": "Shipping, taxes, and discount codes are calculated at checkout.",
+      "label": "Checkout Disclaimer",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "default": "Subscribe and save {{ discount }}",
+      "placeholder": "Subscribe and save",
+      "label": "Subscribe and save",
+      "id": "__label_subscribe_and_save",
+      "type": "text",
+      "info": "You can use {{ discount }} in the label to insert the subscription saving amount"
+    },
+    {
+      "default": "Discount",
+      "label": "Discount",
+      "placeholder": "Discount",
+      "id": "__label_discount_label",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "default": "Initial Price",
+      "label": "Initial Price",
+      "placeholder": "Initial Price",
+      "id": "__label_initial_price",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "default": "Final Price",
+      "id": "__label_final_price",
+      "label": "Final Price",
+      "placeholder": "Final Price",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "default": "FREE",
+      "id": "__label_free",
+      "placeholder": "Free",
+      "label": "\"Free\" Label",
+      "type": "text",
+      "info": ""
+    },
+    {
+      "default": "One-time purchase",
+      "label": "One-time purchase",
+      "id": "__label_one_time_purchase",
+      "placeholder": "One-time purchase",
+      "type": "text"
+    },
+    {
+      "type": "header",
+      "content": "Shipping protection"
+    },
+    {
+      "default": "f9e64f208889485594d50211c4b284e0",
+      "label": "Shipping Protection",
+      "id": "shipping_protection_template",
+      "type": "template:shipping-protection"
+    },
+    {
+      "type": "header",
+      "content": "Advanced settings"
+    },
+    {
+      "default": true,
+      "label": "Enable subscribe and save",
+      "id": "enable_subscribe_and_save",
+      "type": "boolean",
+      "info": "Allow customer to opt into a subscription in the cart"
+    },
+    {
+      "default": true,
+      "id": "show_reward_progress_when_empty",
+      "label": "Show reward progress bar when cart is empty",
+      "type": "boolean"
+    },
+    {
+      "default": false,
+      "id": "enable_klarna",
+      "label": "Enable Klarna",
+      "type": "boolean"
+    },
+    {
+      "id": "top_custom_code",
+      "label": "Top Custom Code",
+      "type": "code",
+      "info": "Custom code to insert on top of the cart slider"
+    },
+    {
+      "label": "Bottom Custom Code",
+      "id": "bottom_custom_code",
+      "type": "code",
+      "info": "Custom code to insert below the checkout button"
+    },
+    {
+      "default": "#upezCart {\n  /* Accent color of the cart */\n  --upez--general-bg-color: #faf8f4;\n\n  /* Border radius of buttons, images, cards, ... */}\n:root{\n  --upez-corner-base: 4px;\n}",
+      "label": "Custom css",
+      "placeholder": "e.g: .cart_label {}",
+      "id": "css",
+      "type": "css",
+      "info": "Css code to be inserted between <style>...</style>"
+    },
+    {
+      "label": "Render cart item property binding (JS)",
+      "id": "cart_item_property_binding",
+      "type": "js",
+      "info": "Custom JavaScript code to render cart item property binding. This code will be executed for each cart item. Use this to customize the cart item properties. You can access the cart item object using the variable `state.cartItem`."
+    },
+    {
+      "banner": "critical",
+      "type": "header",
+      "subheadline": "Don't worry. Watch these videos below and fill in the values to make UPEZ work seamlessly with your theme.",
+      "content": "Having issues with the cart drawer?"
+    },
+    {
+      "default": "cart-drawer, #site-cart-sidebar, .cart__drawer, #Cart-Drawer, .quick-cart, #right-drawer-slot",
+      "tooltip_html": "",
+      "popup_html": "<div style=\"position: relative; padding-bottom: 62.93706293706294%; height: 0;\"><iframe src=\"https://www.loom.com/embed/1e6b971ee8b94e799629e4991c5718fd?sid=495a30ce-aee2-4f67-ac5b-79d7ad9b718d\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\"></iframe></div>",
+      "placeholder": "e.g: cart-drawer",
+      "id": "disableCartSelectors",
+      "label": "Force hide the default cart drawer by its CSS selector",
+      "type": "text",
+      "info": "If you see your default cart drawer opens along with the UPEZ Cart, enter the CSS selector of the cart drawer and UPEZ will hide the default cart away. Leave this empty if the UPEZ cart slider is already working."
+    },
+    {
+      "default": ".cart-count-bubble, [data-header-cart-count], cart-count, .thb-item-count, [data-js-cart-count], [x-text=\"$store.cartCount.count\"]",
+      "thumbnail": "https://cdn.builder.io/api/v1/image/assets%2F3628f640692a4d2fa236d814bb277285%2Fdfb91db8762642da81d1f063f1ddebb7",
+      "tooltip_html": "",
+      "popup_html": "<div style=\"position: relative; padding-bottom: 71.42857142857143%; height: 0;\"><iframe src=\"https://www.loom.com/embed/5044bddaf547468f816d2cc27186b38d?sid=d516f22f-f949-48db-b608-765faee74558\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\"></iframe></div>",
+      "placeholder": "e.g: .cart-total-items",
+      "id": "cart_item_count_selector",
+      "label": "Cart item count selector",
+      "type": "text",
+      "info": "Enter the cart bubble item count. Leave empty if the items count is already working."
+    },
+    {
+      "default": ".area--cart",
+      "thumbnail": "https://cdn.builder.io/api/v1/image/assets%2F3628f640692a4d2fa236d814bb277285%2F27c940c3952a497eaeb69cd5c53c6dbf",
+      "tooltip_html": "",
+      "popup_html": "<div style=\"position: relative; padding-bottom: 62.93706293706294%; height: 0;\"><iframe src=\"https://www.loom.com/embed/a2fe360879e2463e80628e8cba1973c2?sid=f2bba6ad-e485-46f4-8da7-07f5f42240a6\" frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\"></iframe></div>",
+      "id": "cart_button_selector",
+      "label": "Cart button selector",
+      "placeholder": "e.g: #cartButton",
+      "type": "text",
+      "info": "Enter the selector of the cart button that should open the cart slider. Leave this empty if the cart slider is already working"
+    },
+    {
+      "type": "header",
+      "content": "PDP settings"
+    },
+    {
+      "label": "Price container selector on Product Page",
+      "placeholder": "Selector of the container of your product prices",
+      "id": "pdp_price_container_selector",
+      "type": "text"
+    },
+    {
+      "default": "0a185abc20804bf08d8b66e7fe92cdc5",
+      "id": "product_price_template",
+      "label": "Prices on product page",
+      "type": "template:product-price"
+    }
+  ]
+}
