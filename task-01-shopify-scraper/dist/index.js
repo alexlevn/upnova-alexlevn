@@ -19,7 +19,6 @@ const PORT = 3000;
 app.use(express_1.default.json());
 // API Endpoint
 app.post('/scrape', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('\n---Request received');
     const { url } = req.body;
     if (!url) {
         return res.status(400).send({ error: 'URL is required' });

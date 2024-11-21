@@ -8,7 +8,6 @@ app.use(express.json());
 
 // API Endpoint
 app.post('/scrape', async (req: Request, res: Response) => {
-  console.log('\n---Request received');
   const { url } = req.body;
 
   if (!url) {

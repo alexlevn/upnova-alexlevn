@@ -3,22 +3,13 @@ import puppeteer from 'puppeteer';
 import { FontStyle, ButtonStyle, ScraperResponse } from './types';
 
 export async function scrapeShopify(url: string): Promise<ScraperResponse> {
-  console.log("Call me: scrapeShopify");
-
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    console.log(`Navigating to: ${url}`);
     await page.goto(url, { waitUntil: 'domcontentloaded' });
-
     const html = await page.content();
-    console.log(`\nFetched HTML length: ${html.length}`);
-    console.log(`\nHTML content preview: ${html.substring(0, 200)}`);
-
     const $ = cheerio.load(html);
-
-    console.log(`\nPage title: ${$('title').text()}`);
 
     const fonts: FontStyle[] = [];
     $('style').each((_, element) => {

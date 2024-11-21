@@ -40,17 +40,12 @@ const cheerio = __importStar(require("cheerio"));
 const puppeteer_1 = __importDefault(require("puppeteer"));
 function scrapeShopify(url) {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("Call me: scrapeShopify");
         try {
             const browser = yield puppeteer_1.default.launch();
             const page = yield browser.newPage();
-            console.log(`Navigating to: ${url}`);
             yield page.goto(url, { waitUntil: 'domcontentloaded' });
             const html = yield page.content();
-            console.log(`\nFetched HTML length: ${html.length}`);
-            console.log(`\nHTML content preview: ${html.substring(0, 200)}`);
             const $ = cheerio.load(html);
-            console.log(`\nPage title: ${$('title').text()}`);
             const fonts = [];
             $('style').each((_, element) => {
                 const cssContent = $(element).html();
