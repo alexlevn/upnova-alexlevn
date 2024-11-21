@@ -49,10 +49,8 @@ function scrapeShopify(url) {
             const html = yield page.content();
             console.log(`\nFetched HTML length: ${html.length}`);
             console.log(`\nHTML content preview: ${html.substring(0, 200)}`);
-            // Sử dụng Cheerio để phân tích HTML
             const $ = cheerio.load(html);
             console.log(`\nPage title: ${$('title').text()}`);
-            // Trích xuất fonts
             const fonts = [];
             $('style').each((_, element) => {
                 const cssContent = $(element).html();
@@ -61,36 +59,29 @@ function scrapeShopify(url) {
                 while ((match = fontFaceRegex.exec(cssContent)) !== null) {
                     fonts.push({
                         family: match[1],
-                        variants: '400', // Bạn có thể mở rộng logic để trích xuất weight/style
+                        variants: '400',
                         letterSpacings: '0.01em',
                         fontWeight: '400',
                         url: match[2].replace(/^\/\//, 'https://').replace(/["']/g, '')
                     });
                 }
             });
-            // Loại bỏ font trùng lặp
             const uniqueFonts = fonts.filter((font, index, self) => index === self.findIndex((f) => f.family === font.family && f.url === font.url));
-            // Lấy CSS computed styles từ Puppeteer cho nút chính
             const primaryButtonStyles = yield page.evaluate(() => {
                 var _a;
-                // Lấy tất cả các nút có thể là "primary button"
                 const buttons = Array.from(document.querySelectorAll('button, a'));
                 let primaryButton = null;
-                // Tìm nút phù hợp
                 for (const button of buttons) {
                     const text = ((_a = button.textContent) === null || _a === void 0 ? void 0 : _a.trim().toLowerCase()) || '';
                     const className = button.className || '';
-                    // Điều kiện chọn nút
-                    if ((text.includes('add to cart') || text.includes('buy now')) && // Văn bản phù hợp
-                        (className.includes('add-to-cart') || className.includes('button')) // Class phù hợp
-                    ) {
+                    if ((text.includes('add to cart') || text.includes('buy now')) &&
+                        (className.includes('add-to-cart') || className.includes('button'))) {
                         primaryButton = button;
-                        break; // Chọn nút đầu tiên phù hợp
+                        break;
                     }
                 }
                 if (!primaryButton)
                     return null;
-                // Lấy computed styles
                 const computedStyle = window.getComputedStyle(primaryButton);
                 return {
                     fontFamily: computedStyle.fontFamily,
@@ -113,7 +104,6 @@ function scrapeShopify(url) {
             else {
                 console.log("Primary Button Computed Styles:", primaryButtonStyles);
             }
-            // Trả về nút chính hoặc mặc định
             const primaryButton = primaryButtonStyles || {
                 fontFamily: 'Unknown',
                 fontSize: '16px',
