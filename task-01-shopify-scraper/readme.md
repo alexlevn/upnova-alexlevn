@@ -122,6 +122,6 @@ Example JSON response:
 
 ---
 
-## Issues & Feedback
+## Result
 
-For support or issues, open an issue on the repository or contact via email.
+![task 01](./result-task-01.png)
