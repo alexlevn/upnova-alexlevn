@@ -16,6 +16,10 @@
 
   ![console tab 02](./images/console-tab-02.png)
 
-- However, I proceeded with the task based on the logs from the Console since I was able to retrieve the data. Here is the result:
+## Final
 
-  ![result](./images/result.png)
+I followed the way I understood it. Please help me check.
+
+Copy and paste all the code in `script.js` into the Chrome console. Below is the result screenshot from running it on my laptop.
+
+![result](./images/result.png)
