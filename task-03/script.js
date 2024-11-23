@@ -1,37 +1,62 @@
-if (window.UPEZ_BUILDER_DATA) {
-  const keys = Object.keys(window.UPEZ_BUILDER_DATA);
+const upezData = window.UPEZ_BUILDER_DATA;
 
-  if (keys.length > 0) {
-    const jsonData = window.UPEZ_BUILDER_DATA[keys[0]][0].data;
-    const settings = jsonData.settings;
-    const blocks = jsonData.blocks;
+let blocks;
+const blockDatas = [];
 
-    console.log(`Total settings found: ${settings.length}`);
-    console.log(`Total blocks found: ${blocks.length}`);
-  } else {
-    console.log("UPEZ_BUILDER_DATA exists but has no valid keys.");
+// Recursive function to process blocks and their children
+function processBlock(block) {
+  const { layerName, id, children } = block;
+  if (layerName && id) {
+    blockDatas.push({ layerName, id, settingId: block.bindings?.["component.options.code"] || "No settingId" });
   }
-} else {
-  console.log("UPEZ_BUILDER_DATA does not exist.");
+
+  if (children && Array.isArray(children)) {
+    children.forEach(child => processBlock(child));
+  }
 }
 
-const elementsWithBuilderId = document.querySelectorAll("[builder-id]");
+// Retrieve blocks from upezData
+for (const key in upezData) {
+  if (Array.isArray(upezData[key])) {
+    const firstItem = upezData[key][0];
+    if (firstItem && firstItem.data && firstItem.data.blocks) {
+      blocks = firstItem.data.blocks;
+      break;
+    }
+  }
+}
 
-elementsWithBuilderId.forEach((element) => {
-  const builderId = element.getAttribute("builder-id");
+// Process blocks
+if (blocks) {
+  blocks.forEach(block => processBlock(block));
+}
 
-  element.addEventListener("mouseover", () => {
-    element.style.outline = "2px solid red";
-  });
-  element.addEventListener("mouseout", () => {
-    element.style.outline = "none";
-  });
+// Link blockDatas with DOM
+const builderBlocks = document.querySelectorAll('.builder-block');
 
-  element.addEventListener("click", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    console.log(`Clicked element with builder-id: ${builderId}`);
-  });
+builderBlocks.forEach(block => {
+  const builderId = block.getAttribute('builder-id');
+
+  if (builderId) {
+    // Find the corresponding blockData using builderId
+    const matchingBlock = blockDatas.find(data => data.id === builderId);
+
+    if (matchingBlock) {
+      // Add hover event
+      block.addEventListener('mouseenter', () => {
+        block.style.outline = '2px solid lightgreen';
+      });
+
+      block.addEventListener('mouseleave', () => {
+        block.style.outline = '';
+      });
+
+      // Add click event
+      block.addEventListener('click', (event) => {
+        event.preventDefault(); 
+        event.stopPropagation();
+        console.log(`Clicked Block "${matchingBlock.layerName}"  - ID: ${matchingBlock.id}`);
+      });
+    }
+  }
 });
-
-console.log(`Total elements with builder-id: ${elementsWithBuilderId.length}`);
